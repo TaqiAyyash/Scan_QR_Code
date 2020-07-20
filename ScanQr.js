@@ -6,7 +6,7 @@ define(['knockout', 'ojs/ojbutton],
         self.firstname = ko.observable();
         self.lastname = ko.observable();
         self.jobTitle = ko.observable();
-        self.scanQR = function (){
+        self.scanQrBTN = function (){
         cordova.plugins.barcodeScanner.scan(
             function (result) {
             alert("information")

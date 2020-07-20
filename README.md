@@ -6,6 +6,6 @@ Steps:
 3. Install plugin to your Project: Two Way:-
 First Way: from CLI go to Path././To hybrid
 then type => cordova plugin add cordova-plugin-barcodescanner
-Second Way: from CLI go to Path././To <ProjectName>
+Second Way: from CLI go to Path././To ProjectName
 then type => ojet add plugin cordova-plugin-barcodescanner
 dont forget to build your project when you add plugin.

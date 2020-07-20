@@ -1,49 +1,48 @@
-
-define(['knockout','ojs/ojbutton],
+define(['knockout', 'ojs/ojbutton],
  function(ko) {
+  
+     function Scan_QR_Code() {
+        var self = this;
+        self.firstname = ko.observable();
+        self.lastname = ko.observable();
+        self.jobTitle = ko.observable();
+        self.scanQR = function (){
+        cordova.plugins.barcodeScanner.scan(
+            function (result) {
+            alert("information")
+            console.log("Data: ", result.text); // show the data inside QR Code
+            //assume we got this data after scanning => taqi/ayyash/developer
+            console.log("Format: ", result.format); // show the format of the code have been scanned
+            if (result.format == "QR_CODE") {
+                var DTsplit = result.text.split(" / ");
+                self.firstname(DTsplit[0]);
+                self.lastname(DTsplit[1]);
+                self.jobTitle(DTsplit[2]);
+                console.log("first name: "self.firstname());
+                console.log("last name: "self.lastname());
+                console.log("job Title: "self.jobTitle());
+                         }
+            function (error) {
+            alert("Scanning failed: " + error);
+            }
+            );
+            }
 
-    function Scan_QR_Code() {
-      var self = this;
-    
-     
-      self.ScanQr = function (){ 
-cordova.plugins.barcodeScanner.scan(
-      function (result) {
-alert("information")
-console.log(result.text); // show the data inside QR Code
-console.log("Format",result.format); // show the format of the code have been scanned
-      function (error) {
-          alert("Scanning failed: " + error);
-      }
-   );
-}
-      
-      self.connected = function() {
-        
-        // Implement further logic if needed
-      };
+        self.connected = function() {
 
-      /**
-       * Optional ViewModel method invoked after the View is disconnected from the DOM.
-       */
-      self.disconnected = function() {
-        // Implement if needed
-      };
+            // Implement further logic if needed
+             };
+                              
+        self.disconnected = function() {
+            // Implement if needed
+            };
+                                
+        self.transitionCompleted = function() {
+            // Implement if needed
+            };
+                        }
 
-      /**
-       * Optional ViewModel method invoked after transition to the new View is complete.
-       * That includes any possible animation between the old and the new View.
-       */
-      self.transitionCompleted = function() {
-        // Implement if needed
-      };
-    }
-
-    /*
-     * Returns an instance of the ViewModel providing one instance of the ViewModel. If needed,
-     * return a constructor for the ViewModel so that the ViewModel is constructed
-     * each time the view is displayed.
-     */
-    return Scan_QR_Code;
-  }
-);
+                        
+        return Scan_QR_Code;
+            }
+            );
